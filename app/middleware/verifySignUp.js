@@ -8,7 +8,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         where: {
             username: req.body.username
         }
-    }).then(user => {
+    }).then(user => { // then digunakan sebagai promise
         if (user) {
             res.status(400).send({
                 message: "Failed! Username is already in use!"
@@ -36,6 +36,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 };
 
 checkRolesExisted = (req, res, next) => {
+    // ambil roles dari request, periksa apakah semuanya ada
     if (req.body.roles) {
         for (let i = 0; i < req.body.roles.length; i++) {
             if (!ROLES.includes(req.body.roles[i])) {
