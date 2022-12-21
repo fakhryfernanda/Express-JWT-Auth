@@ -7,7 +7,6 @@
 [Req Object](https://www.digitalocean.com/community/tutorials/nodejs-req-object-in-expressjs)
 
 ## Methods
-``` html
 <table>
     <thead>
         <tr>
@@ -49,7 +48,6 @@
         </tr>
     </tbody>
 </table>
-```
 
 
 ## Controller for testing Authorization
