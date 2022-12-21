@@ -1,5 +1,14 @@
+const db = require("../models");
+const User = db.user;
+
 exports.allAccess = (req, res) => {
-    res.status(200).send("Public Content.");
+    User.findAll({
+        attributes: ['username', 'email'] // hanya mengambil kolom username dan email
+    }).then(users => {
+        // JSON.stringify(value, replacer, space)
+        // res.status(200).send(JSON.stringify(users, null, 2));
+        res.status(200).send(users);
+    });
 };
 
 exports.userBoard = (req, res) => {

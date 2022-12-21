@@ -1,5 +1,6 @@
+// pake kurung kurawal kalo mau import banyak fungsi dari satu file
 const { verifySignUp } = require("../middleware");
-const controller = require("../controllers/auth.controller");
+const AuthController = require("../controllers/auth.controller");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -16,8 +17,8 @@ module.exports = function(app) {
             verifySignUp.checkDuplicateUsernameOrEmail,
             verifySignUp.checkRolesExisted
         ],
-        controller.signup
+        AuthController.signup
     );
 
-    app.post("/api/auth/signin", controller.signin);
+    app.post("/api/auth/signin", AuthController.signin);
 };

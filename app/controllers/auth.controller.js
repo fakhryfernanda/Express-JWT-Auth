@@ -9,7 +9,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-    // Save User to Database
+    // Isi data ke dalam model
     User.create({
         username: req.body.username,
         email: req.body.email,
@@ -19,13 +19,19 @@ exports.signup = (req, res) => {
             Role.findAll({
                 where: {
                     name: {
-                        [Op.or]: req.body.roles
+                        [Op.or]: req.body.roles // memeriksa apakah role dari req ada di database
                     }
                 }
             }).then(roles => {
+                // Cara 1
+                // Jika user.setRoles(roles) berhasil dijalankan, lakukan res.send()
                 user.setRoles(roles).then(() => {
                     res.send({ message: "User was registered successfully!" });
                 });
+
+                // Cara 2 (tidak disarankan)
+                // user.setRoles(roles);
+                // res.send({ message: "User was registered successfully!" });
             });
 
         } else {
