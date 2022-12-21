@@ -7,21 +7,57 @@
 [Req Object](https://www.digitalocean.com/community/tutorials/nodejs-req-object-in-expressjs)
 
 ## Methods
-Methods	    Urls	            Actions
-POST	    /api/auth/signup	signup new account
-POST	    /api/auth/signin	login an account
-GET	        /api/test/all	    retrieve public content
-GET	        /api/test/user	    access User’s content
-GET	        /api/test/mod	    access Moderator’s content
-GET	        /api/test/admin	    access Admin’s content
+``` html
+<table>
+    <thead>
+        <tr>
+            <th>Methods</th>
+            <th>Urls</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>POST</td>
+            <td>/api/auth/signup</td>
+            <td>signup new account</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/api/auth/signin</td>
+            <td>login an account</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/api/test/all</td>
+            <td>retrieve public content</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/api/test/user</td>
+            <td>access User’s content</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/api/test/mod</td>
+            <td>access Moderator’s content</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/api/test/admin</td>
+            <td>access Admin’s content</td>
+        </tr>
+    </tbody>
+</table>
+```
 
 
 ## Controller for testing Authorization
 There are 4 functions:
-– `/api/test/all` for public access
-– `/api/test/user` for loggedin users (role: user/moderator/admin)
-– `/api/test/mod` for users having moderator role
-– `/api/test/admin` for users having admin role
+– /api/test/all for public access
+– /api/test/user for loggedin users (role: user/moderator/admin)
+– /api/test/mod for users having moderator role
+– /api/test/admin for users having admin role
 
 
 ## Authorization:
