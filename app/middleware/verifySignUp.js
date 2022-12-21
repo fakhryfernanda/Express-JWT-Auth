@@ -36,35 +36,35 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 };
 
 // jika user bisa memiliki lebih dari satu role
-// checkRolesExisted = (req, res, next) => {
-//     // ambil roles dari request, periksa apakah semuanya ada
-//     if (req.body.roles) {
-//         for (let i = 0; i < req.body.roles.length; i++) {
-//             if (!ROLES.includes(req.body.roles[i])) {
-//                 res.status(400).send({
-//                     message: "Failed! Role does not exist = " + req.body.roles[i]
-//                 });
-//                 return;
-//             }
-//         }
-//     }
-  
-//     next();
-// };
-
 checkRolesExisted = (req, res, next) => {
     // ambil roles dari request, periksa apakah semuanya ada
-    if (req.body.role) {
-        if (!ROLES.includes(req.body.role)) {
-            res.status(400).send({
-                message: "Failed! Role does not exist = " + req.body.role
-            });
-            return;
+    if (req.body.roles) {
+        for (let i = 0; i < req.body.roles.length; i++) {
+            if (!ROLES.includes(req.body.roles[i])) {
+                res.status(400).send({
+                    message: "Failed! Role does not exist = " + req.body.roles[i]
+                });
+                return;
+            }
         }
     }
   
     next();
 };
+
+// checkRolesExisted = (req, res, next) => {
+//     // ambil roles dari request, periksa apakah semuanya ada
+//     if (req.body.role) {
+//         if (!ROLES.includes(req.body.role)) {
+//             res.status(400).send({
+//                 message: "Failed! Role does not exist = " + req.body.role
+//             });
+//             return;
+//         }
+//     }
+  
+//     next();
+// };
 
 const verifySignUp = {
     checkDuplicateUsernameOrEmail: checkDuplicateUsernameOrEmail,

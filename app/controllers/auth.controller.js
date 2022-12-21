@@ -68,12 +68,12 @@ exports.signin = (req, res) => {
         var authorities = [];
         user.getRoles().then(roles => {
             // Many to many
-            // for (let i = 0; i < roles.length; i++) {
-            //     authorities.push("ROLE_" + roles[i].name.toUpperCase());
-            // }
+            for (let i = 0; i < roles.length; i++) {
+                authorities.push("ROLE_" + roles[i].name.toUpperCase());
+            }
 
             // One to many
-            authorities.push("ROLE_" + roles.name.topUpperCase());
+            // authorities.push("ROLE_" + roles.name.topUpperCase());
 
             res.status(200).send({
                 id: user.id,

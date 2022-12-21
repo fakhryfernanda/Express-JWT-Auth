@@ -28,24 +28,24 @@ db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 
 // MANY TO MANY
-// db.role.belongsToMany(db.user, {
-//   through: "user_roles",
-//   foreignKey: "roleId",
-//   otherKey: "userId"
-// });
-// db.user.belongsToMany(db.role, {
-//   through: "user_roles",
-//   foreignKey: "userId",
-//   otherKey: "roleId"
-// });
-
-
-// ONE TO MANY
-db.role.hasMany(db.user, { as: "users" });
-db.user.belongsTo(db.role, {
+db.role.belongsToMany(db.user, {
+  through: "user_roles",
   foreignKey: "roleId",
-  as: "role",
+  otherKey: "userId"
 });
+db.user.belongsToMany(db.role, {
+  through: "user_roles",
+  foreignKey: "userId",
+  otherKey: "roleId"
+});
+
+
+// // ONE TO MANY
+// db.role.hasMany(db.user, { as: "users" });
+// db.user.belongsTo(db.role, {
+//   foreignKey: "roleId",
+//   as: "role",
+// });
 
 db.ROLES = ["user", "admin", "moderator"];
 
